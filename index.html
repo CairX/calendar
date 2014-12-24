@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Jan</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="dateutils.js"></script>
+	</head>
+	<body>
+		<script>
+			var Tag = (function() {
+				return {
+					'string': function(name, content, options) {
+						var result = '<' + name;
+						for (key in options) {
+							result += ' ' + key;
+							result += '="' + options[key] + '"';
+						}
+						result += '>';
+						result += content;
+						result += '</' + name + '>';
+						return result;
+					}
+				};
+			})();
+
+			var today = new Date();
+
+			for (var m = today.getMonth(); m < (today.getMonth() + 12); m++) {
+				var tmp = new Date(today);
+				tmp.setMonth(m);
+
+				var dates = DateUtils.getCalendarDates(tmp.getFullYear(), tmp.getMonth());
+
+				// Make into HTML
+				var rows = '';
+				var row = '';
+				for (var i = 0; i < dates.length; i++) {
+					var day = dates[i];
+					row += Tag.string('td', day.getDate());
+
+					if ((i + 1) % 7 == 0) {
+						rows +='<tr>' + row + '</tr>';
+						row = '';
+					}
+				}
+
+				var thead = Tag.string('thead', '<tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr>');
+				var tbody = Tag.string('tbody', rows);
+				var table = Tag.string('table', thead + tbody);
+
+				var year = Tag.string('span', tmp.getFullYear(), { 'class': 'year' });
+				var header = Tag.string('h2', DateUtils.getMonthName(tmp.getMonth()) + ' ' + year);
+				var page = Tag.string('div', header + table, { 'class': 'page' })
+
+				document.body.innerHTML += page;
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,75 @@
+/* Basics
+/***************************/
+html {
+  font-size: 14px;
+  padding: 0;
+  margin: 0; }
+
+body {
+  font-family: Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  background: #eee; }
+
+/* Page frame
+/***************************/
+.page {
+  width: 297mm;
+  height: 210mm;
+  padding: 10mm;
+  box-sizing: border-box;
+  margin: 0 auto 10mm;
+  background: white; }
+
+/* Calendar month and year
+/***************************/
+h2 {
+  font-weight: normal;
+  margin: 0;
+  height: 10mm; }
+
+h2 .year {
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: lighter; }
+
+/* Calendar table
+/***************************/
+table {
+  width: 100%;
+  table-layout: fixed;
+  text-align: right;
+  border-collapse: collapse;
+  height: calc(100% - 10mm); }
+
+th {
+  font-weight: lighter;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15); }
+
+th, td {
+  padding: 1rem; }
+
+td {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  vertical-align: top; }
+
+td:nth-child(6),
+td:nth-child(7) {
+  color: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.05); }
+
+/* Printing
+/***************************/
+@media print {
+  html {
+    font-size: 12pt; }
+
+  body {
+    font-size: 10pt;
+    background: transparent; }
+
+  table {
+    margin: 0; } }
+@page {
+  margin: 0; }
+
+/*# sourceMappingURL=style.css.map */
