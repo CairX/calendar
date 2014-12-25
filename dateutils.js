@@ -72,5 +72,19 @@ var DateUtils = (function() {
 		return dates;
 	};
 
-	return { 'getCalendarDates': getCalendarDates, 'getMonthName': getMonthName };
+	var getWeek = function(date) {
+		var year = new Date(date.getFullYear(), 0);
+		return Math.ceil((date.getTime() - year.getTime()) / (7 * 24 * 60 * 60 * 1000));
+	};
+
+	var padding = function(number) {
+		return (number.toString().length == 1) ? '0' + number : number;
+	};
+
+	return {
+		'getCalendarDates': getCalendarDates,
+		'getMonthName': getMonthName,
+		'getWeek': getWeek,
+		'padding': padding
+	};
 })();

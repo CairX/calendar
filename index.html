@@ -26,7 +26,7 @@
 
 			var today = new Date();
 
-			for (var m = today.getMonth(); m < (today.getMonth() + 12); m++) {
+			for (var m = today.getMonth(); m < (today.getMonth() + 14); m++) {
 				var tmp = new Date(today);
 				tmp.setMonth(m);
 
@@ -37,7 +37,13 @@
 				var row = '';
 				for (var i = 0; i < dates.length; i++) {
 					var day = dates[i];
-					row += Tag.string('td', day.getDate());
+					var content = '';
+
+					if (i % 7 == 0) {
+						content = Tag.string('span', DateUtils.padding(DateUtils.getWeek(day)), { 'class': 'week' });
+					}
+					content += DateUtils.padding(day.getDate())
+					row += Tag.string('td', content);
 
 					if ((i + 1) % 7 == 0) {
 						rows +='<tr>' + row + '</tr>';

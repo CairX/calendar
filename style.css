@@ -43,7 +43,8 @@ table {
 
 th {
   font-weight: lighter;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.15); }
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  height: 10mm; }
 
 th, td {
   padding: 1rem; }
@@ -56,6 +57,12 @@ td:nth-child(6),
 td:nth-child(7) {
   color: rgba(0, 0, 0, 0.5);
   background: rgba(0, 0, 0, 0.05); }
+
+.week {
+  color: #ef6c00;
+  font-style: italic;
+  display: inline-block;
+  float: left; }
 
 /* Printing
 /***************************/

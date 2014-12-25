@@ -56,6 +56,7 @@ table {
 th {
 	font-weight: lighter;
 	border-bottom: 2px solid $border;
+	height: 10mm;
 }
 th, td {
 	padding: 1rem;
@@ -68,6 +69,12 @@ td:nth-child(6),
 td:nth-child(7) {
 	color: $weekend-text;
 	background: $weekend-background;
+}
+.week {
+	color: #ef6c00;
+	font-style: italic;
+	display: inline-block;
+	float: left;
 }
 
 
