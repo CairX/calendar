@@ -45,7 +45,7 @@
 					content += DateUtils.padding(day.getDate())
 					row += Tag.string('td', content);
 
-					if ((i + 1) % 7 == 0) {
+					if ((i + 1) % 7 == 0 || i == dates.length - 1) {
 						rows +='<tr>' + row + '</tr>';
 						row = '';
 					}

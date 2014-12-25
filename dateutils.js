@@ -54,7 +54,7 @@ var DateUtils = (function() {
 		}
 
 		// Fill we the coming days...
-		for (var i = 1; i <= getLastDay(year, month); i++) {
+		for (var i = 1; i < getLastDay(year, month); i++) {
 			var tmp = new Date(base);
 			tmp.setDate(i);
 			dates.push(tmp);
@@ -62,7 +62,8 @@ var DateUtils = (function() {
 
 		// Fill end...
 		var end = dates[dates.length -1];
-		for (var i = 1; i < (8 - dates.length % 7); i++) {
+		var stop = (7 - (dates.length % 7));
+		for (var i = 1; i <= stop; i++) {
 			var tmp = new Date(end);
 			tmp.setMonth(tmp.getMonth() + 1);
 			tmp.setDate(i);
