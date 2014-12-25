@@ -47,7 +47,7 @@ var DateUtils = (function() {
 		var dates = [];
 
 		// Fill previous days of the week from last month.
-		for (var i = -getLogicalDay(base.getDay()); i < 0; i++) {
+		for (var i = -getLogicalDay(base.getDay()) + 1; i <= 0; i++) {
 			var tmp = new Date(base);
 			tmp.setDate(i);
 			dates.push(tmp);
