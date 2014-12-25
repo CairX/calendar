@@ -75,7 +75,11 @@ var DateUtils = (function() {
 
 	var getWeek = function(date) {
 		var year = new Date(date.getFullYear(), 0);
-		return Math.ceil((date.getTime() - year.getTime()) / (7 * 24 * 60 * 60 * 1000));
+		var week = 7 * 24 * 60 * 60 * 1000;
+		var start_of_week = getLogicalDay(date.getDay()) * 24 * 60 * 60 * 1000;
+		var this_year = date.getTime() - start_of_week - year.getTime()
+
+		return ((Math.ceil(this_year / week) % 52) + 1);
 	};
 
 	var padding = function(number) {
