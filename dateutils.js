@@ -1,17 +1,16 @@
 var DateUtils = (function() {
+	var weekNames = [
+		'Mån', 'Tis', 'Ons',
+		'Tor', 'Fre', 'Lör', 'Sön'
+	];
+	var monthNames = [
+		'Januari', 'Februari', 'Mars', 'April',
+		'Maj', 'Juni', 'Juli', 'Augusti',
+		'September', 'Oktober', 'November', 'December'
+	];
+
 	var getMonthName = function(month) {
-		return ['January',
-				'February',
-				'Mars',
-				'April',
-				'May',
-				'June',
-				'July',
-				'August',
-				'September',
-				'October',
-				'November',
-				'December'][month];
+		return monthNames[month];
 	};
 
 	var getLogicalDay = function(day) {
@@ -90,6 +89,7 @@ var DateUtils = (function() {
 		'getCalendarDates': getCalendarDates,
 		'getMonthName': getMonthName,
 		'getWeek': getWeek,
-		'padding': padding
+		'padding': padding,
+		'weekNames': weekNames
 	};
 })();

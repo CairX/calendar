@@ -51,7 +51,12 @@
 					}
 				}
 
-				var thead = Tag.string('thead', '<tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr>');
+				var thead = '';
+				for (var i = 0; i < DateUtils.weekNames.length; i++) {
+					thead += Tag.string('th', DateUtils.weekNames[i]);
+				}
+				thead = Tag.string('thead', Tag.string('tr', thead));
+
 				var tbody = Tag.string('tbody', rows);
 				var table = Tag.string('table', thead + tbody);
 
