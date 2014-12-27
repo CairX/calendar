@@ -51,12 +51,14 @@ table {
 	table-layout: fixed;
 	text-align: right;
 	border-collapse: collapse;
-	height: calc(100% - 10mm);
+}
+thead {
+	height: 10mm;
 }
 th {
 	font-weight: lighter;
 	border-bottom: 2px solid $border;
-	height: 10mm;
+	height: 100%;
 }
 th, td {
 	padding: 1rem;
@@ -75,6 +77,12 @@ td:nth-child(7) {
 	font-style: italic;
 	display: inline-block;
 	float: left;
+}
+.day-rows-5 tbody td {
+	height: calc(34mm - 2rem - 2px);
+}
+.day-rows-6 tbody td {
+	height: calc(28.33mm - 2rem - 2px);
 }
 
 

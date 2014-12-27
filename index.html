@@ -58,7 +58,7 @@
 				thead = Tag.string('thead', Tag.string('tr', thead));
 
 				var tbody = Tag.string('tbody', rows);
-				var table = Tag.string('table', thead + tbody);
+				var table = Tag.string('table', thead + tbody, { 'class': 'day-rows-' + Math.round(dates.length / 7) });
 
 				var year = Tag.string('span', tmp.getFullYear(), { 'class': 'year' });
 				var header = Tag.string('h2', DateUtils.getMonthName(tmp.getMonth()) + ' ' + year);
