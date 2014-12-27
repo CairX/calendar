@@ -41,34 +41,35 @@ var DateUtils = (function() {
 		return last;
 	};
 
+	var getCalendarFirstDay = function(year, month) {
+		var date = new Date(year, month);
+		date.setDate(-getLogicalDay(date.getDay()) + 1);
+		return date;
+	};
+	var getCalendarLastDay = function(year, month) {
+		var date = new Date(year, month+1, 0);
+		date.setDate(date.getDate() + 7 - getLogicalDay(date.getDay()) - 1);
+		return date;
+	};
+
 	var getCalendarDates = function(year, month) {
 		var base = new Date(year, month);
 		var dates = [];
 
-		// Fill previous days of the week from last month.
-		for (var i = -getLogicalDay(base.getDay()) + 1; i <= 0; i++) {
-			var tmp = new Date(base);
-			tmp.setDate(i);
-			dates.push(tmp);
-		}
+		var date = getCalendarFirstDay(year, month);
+		var end  = getCalendarLastDay(year, month);
 
-		// Fill we the coming days...
-		for (var i = 1; i < getLastDay(year, month); i++) {
-			var tmp = new Date(base);
-			tmp.setDate(i);
+		while (true) {
+			var tmp = new Date(date);
+			tmp.setDate(date.getDate());
 			dates.push(tmp);
-		}
 
-		// Fill end...
-		var end = dates[dates.length -1];
-		var stop = (7 - (dates.length % 7));
-		for (var i = 1; i <= stop; i++) {
-			var tmp = new Date(end);
-			tmp.setMonth(tmp.getMonth() + 1);
-			tmp.setDate(i);
-			dates.push(tmp);
-		}
+			if (tmp.getTime() == end.getTime()) {
+				break;
+			}
 
+			date.setDate(date.getDate() + 1);
+		}
 		return dates;
 	};
 
@@ -87,6 +88,8 @@ var DateUtils = (function() {
 
 	return {
 		'getCalendarDates': getCalendarDates,
+		'getCalendarFirstDay': getCalendarFirstDay,
+		'getCalendarLastDay': getCalendarLastDay,
 		'getMonthName': getMonthName,
 		'getWeek': getWeek,
 		'padding': padding,
