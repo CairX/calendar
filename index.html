@@ -4,9 +4,8 @@
 		<meta charset="utf-8" />
 		<title>Calendar</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<script type="text/javascript" src="dateutils.js"></script>
-	</head>
-	<body>
+		<script src="dateutils.js"></script>
+
 		<script>
 			var Tag = (function() {
 				return {
@@ -24,58 +23,78 @@
 				};
 			})();
 
-			var today = new Date();
+			var update = function() {
+				var element = document.getElementById('content');
+				var result = '';
+				var today = new Date();
 
-			for (var m = today.getMonth(); m < (today.getMonth() + 14); m++) {
-				var tmp = new Date(today);
-				tmp.setMonth(m);
+				var holidays = document.getElementById('holidays').checked;
 
-				var dates = DateUtils.getCalendarDates(tmp.getFullYear(), tmp.getMonth());
+				for (var m = today.getMonth(); m < (today.getMonth() + 14); m++) {
+					var tmp = new Date(today);
+					tmp.setMonth(m);
 
-				// Make into HTML
-				var rows = '';
-				var row = '';
-				for (var i = 0; i < dates.length; i++) {
-					var day = dates[i];
-					var content = '';
+					var dates = DateUtils.getCalendarDates(tmp.getFullYear(), tmp.getMonth());
 
-					if (i % 7 == 0) {
-						content = Tag.string('span', DateUtils.padding(DateUtils.getWeek(day)), { 'class': 'week' });
+					// Make into HTML
+					var rows = '';
+					var row = '';
+					for (var i = 0; i < dates.length; i++) {
+						var day = dates[i];
+						var content = '';
+
+						if (i % 7 == 0) {
+							content = Tag.string('span', DateUtils.padding(DateUtils.getWeek(day)), { 'class': 'week' });
+						}
+
+						content += DateUtils.padding(day.getDate())
+
+						if (holidays && day.red) {
+							content += Tag.string('p', day.red, { 'class': 'red-day' });;
+						}
+
+						row += Tag.string('td', content);
+
+						if ((i + 1) % 7 == 0 || i == dates.length - 1) {
+							rows +='<tr>' + row + '</tr>';
+							row = '';
+						}
 					}
 
-					content += DateUtils.padding(day.getDate())
-
-					if (day.red) {
-						content += Tag.string('p', day.red, { 'class': 'red-day' });;
+					var thead = '';
+					for (var i = 0; i < DateUtils.weekNames.length; i++) {
+						thead += Tag.string('th', DateUtils.weekNames[i]);
 					}
+					thead = Tag.string('thead', Tag.string('tr', thead));
 
-					row += Tag.string('td', content);
+					var tbody = Tag.string('tbody', rows);
+					var table = Tag.string('table', thead + tbody, { 'class': 'day-rows-' + Math.round(dates.length / 7) });
 
-					if ((i + 1) % 7 == 0 || i == dates.length - 1) {
-						rows +='<tr>' + row + '</tr>';
-						row = '';
-					}
+					var year = Tag.string('span', tmp.getFullYear(), { 'class': 'year' });
+					var header = Tag.string('h2', DateUtils.getMonthName(tmp.getMonth()) + ' ' + year);
+					var page = Tag.string('div', header + table, { 'class': 'page' });
+
+					result += page;
 				}
+				element.innerHTML = result;
+			};
+		</script>
+	</head>
+	<body>
+		<ul id="menu">
+			<li>
+				<label>
+					<input id="holidays" name="holidays" type="checkbox"> Helgdagar
+				</label>
+			</li>
+		</ul>
+		<div id="content">
+		</div>
 
-				var thead = '';
-				for (var i = 0; i < DateUtils.weekNames.length; i++) {
-					thead += Tag.string('th', DateUtils.weekNames[i]);
-				}
-				thead = Tag.string('thead', Tag.string('tr', thead));
+		<script>
+			update();
 
-				var tbody = Tag.string('tbody', rows);
-				var table = Tag.string('table', thead + tbody, { 'class': 'day-rows-' + Math.round(dates.length / 7) });
-
-				var year = Tag.string('span', tmp.getFullYear(), { 'class': 'year' });
-				var header = Tag.string('h2', DateUtils.getMonthName(tmp.getMonth()) + ' ' + year);
-				var page = Tag.string('div', header + table, { 'class': 'page' });
-
-				document.body.innerHTML += page;
-			}
-
-			var test = new Date(today);
-			test.red = 'Julafton';
-			console.log(test);
+			document.getElementById('holidays').addEventListener('click', update);
 		</script>
 	</body>
 </html>

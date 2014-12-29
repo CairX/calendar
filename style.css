@@ -77,6 +77,19 @@ td:nth-child(7) {
 .day-rows-6 tbody td {
   height: calc(28.33mm - 2rem - 2px); }
 
+/* Menu
+/***************************/
+#menu {
+  background: white;
+  list-style: none;
+  margin: 0 auto 10mm;
+  padding: 0;
+  -moz-user-select: none;
+  -webkit-user-select: none; }
+
+#menu li {
+  padding: 1rem; }
+
 /* Printing
 /***************************/
 @media print {

@@ -92,6 +92,22 @@ td:nth-child(7) {
 }
 
 
+/* Menu
+/***************************/
+#menu {
+	background: white;
+	list-style: none;
+	margin: 0 auto 10mm;
+	padding: 0;
+
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+#menu li {
+	padding: 1rem;
+}
+
+
 /* Printing
 /***************************/
 @media print {

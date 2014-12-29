@@ -23,7 +23,6 @@ var DateUtils = (function() {
 			var red = redDays [i];
 			if (red.month == date.getMonth() && red.day == date.getDate()) {
 				date.red = red.name;
-				console.log(date);
 				break;
 			}
 		}
