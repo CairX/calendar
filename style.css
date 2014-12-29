@@ -45,6 +45,7 @@ thead {
 
 th {
   font-weight: lighter;
+  vertical-align: bottom;
   border-bottom: 2px solid rgba(0, 0, 0, 0.15);
   height: 100%; }
 
@@ -66,6 +67,10 @@ td:nth-child(7) {
   display: inline-block;
   float: left; }
 
+.red-day {
+  color: rgba(0, 0, 0, 0.5);
+  font-style: italic; }
+
 .day-rows-5 tbody td {
   height: calc(34mm - 2rem - 2px); }
 
@@ -86,5 +91,3 @@ td:nth-child(7) {
     margin: 0; } }
 @page {
   margin: 0; }
-
-/*# sourceMappingURL=style.css.map */

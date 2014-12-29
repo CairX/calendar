@@ -2,6 +2,7 @@ $border: rgba(0, 0, 0, 0.15);
 $weekend-background: rgba(0, 0, 0, 0.05);
 $weekend-text: rgba(0, 0, 0, 0.5);
 $year-text: rgba(0, 0, 0, 0.5);
+$red-day-text: rgba(0, 0, 0, 0.5);
 
 
 /* Basics
@@ -57,6 +58,7 @@ thead {
 }
 th {
 	font-weight: lighter;
+	vertical-align: bottom;
 	border-bottom: 2px solid $border;
 	height: 100%;
 }
@@ -77,6 +79,10 @@ td:nth-child(7) {
 	font-style: italic;
 	display: inline-block;
 	float: left;
+}
+.red-day {
+	color: $red-day-text;
+	font-style: italic;
 }
 .day-rows-5 tbody td {
 	height: calc(34mm - 2rem - 2px);

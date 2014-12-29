@@ -42,7 +42,13 @@
 					if (i % 7 == 0) {
 						content = Tag.string('span', DateUtils.padding(DateUtils.getWeek(day)), { 'class': 'week' });
 					}
+
 					content += DateUtils.padding(day.getDate())
+
+					if (day.red) {
+						content += Tag.string('p', day.red, { 'class': 'red-day' });;
+					}
+
 					row += Tag.string('td', content);
 
 					if ((i + 1) % 7 == 0 || i == dates.length - 1) {
@@ -62,10 +68,14 @@
 
 				var year = Tag.string('span', tmp.getFullYear(), { 'class': 'year' });
 				var header = Tag.string('h2', DateUtils.getMonthName(tmp.getMonth()) + ' ' + year);
-				var page = Tag.string('div', header + table, { 'class': 'page' })
+				var page = Tag.string('div', header + table, { 'class': 'page' });
 
 				document.body.innerHTML += page;
 			}
+
+			var test = new Date(today);
+			test.red = 'Julafton';
+			console.log(test);
 		</script>
 	</body>
 </html>

@@ -9,6 +9,27 @@ var DateUtils = (function() {
 		'September', 'Oktober', 'November', 'December'
 	];
 
+	var redDays = [
+		{ 'month': 0, 'day': 1, 'name': 'Nyårsdagen' },
+		{ 'month': 0, 'day': 6, 'name': 'Trettondedag jul' },
+		{ 'month': 4, 'day': 1, 'name': 'Valborg' },
+		{ 'month': 5, 'day': 6, 'name': 'Sveriges nationaldag' },
+		{ 'month': 11, 'day': 25, 'name': 'Juldagen' },
+		{ 'month': 11, 'day': 26, 'name': 'Annandag jul' }
+	];
+
+	var addRedDay = function(date) {
+		for (var i = 0; i < redDays.length; i++) {
+			var red = redDays [i];
+			if (red.month == date.getMonth() && red.day == date.getDate()) {
+				date.red = red.name;
+				console.log(date);
+				break;
+			}
+		}
+		return date;
+	}
+
 	var getMonthName = function(month) {
 		return monthNames[month];
 	};
@@ -43,6 +64,7 @@ var DateUtils = (function() {
 		while (true) {
 			var tmp = new Date(date);
 			tmp.setDate(date.getDate());
+			tmp = addRedDay(tmp);
 			dates.push(tmp);
 
 			if (tmp.getTime() == end.getTime()) {
