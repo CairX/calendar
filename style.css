@@ -90,6 +90,14 @@ td:nth-child(7) {
 #menu li {
   padding: 1rem; }
 
+/* Menu input controls
+/***************************/
+#months {
+  vertical-align: middle; }
+
+#months-display {
+  color: #ef6c00; }
+
 /* Printing
 /***************************/
 @media print {
@@ -101,6 +109,11 @@ td:nth-child(7) {
     background: transparent; }
 
   table {
-    margin: 0; } }
+    margin: 0; }
+
+  #menu {
+    display: none; } }
 @page {
   margin: 0; }
+
+/*# sourceMappingURL=style.css.map */

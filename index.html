@@ -29,8 +29,9 @@
 				var today = new Date();
 
 				var holidays = document.getElementById('holidays').checked;
+				var months = document.getElementById('months').value;
 
-				for (var m = today.getMonth(); m < (today.getMonth() + 14); m++) {
+				for (var m = today.getMonth(); m < (today.getMonth() + months); m++) {
 					var tmp = new Date(today);
 					tmp.setMonth(m);
 
@@ -78,6 +79,10 @@
 				}
 				element.innerHTML = result;
 			};
+
+			var displayMonths = function() {
+				document.getElementById('months-display').innerHTML = document.getElementById('months').value;
+			};
 		</script>
 	</head>
 	<body>
@@ -87,14 +92,23 @@
 					<input id="holidays" name="holidays" type="checkbox"> Helgdagar
 				</label>
 			</li>
+			<li>
+				<label>
+					<input id="months" type="range" value="12" min="1" max="24" />
+					<span id="months-display"></span> månader
+				</label>
+			</li>
 		</ul>
 		<div id="content">
 		</div>
 
 		<script>
 			update();
+			displayMonths();
 
 			document.getElementById('holidays').addEventListener('click', update);
+			document.getElementById('months').addEventListener('change', update);
+			document.getElementById('months').addEventListener('input', displayMonths);
 		</script>
 	</body>
 </html>

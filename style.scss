@@ -2,6 +2,7 @@ $border: rgba(0, 0, 0, 0.15);
 $weekend-background: rgba(0, 0, 0, 0.05);
 $weekend-text: rgba(0, 0, 0, 0.5);
 $year-text: rgba(0, 0, 0, 0.5);
+$week-text: #ef6c00;
 $red-day-text: rgba(0, 0, 0, 0.5);
 
 
@@ -75,7 +76,7 @@ td:nth-child(7) {
 	background: $weekend-background;
 }
 .week {
-	color: #ef6c00;
+	color: $week-text;
 	font-style: italic;
 	display: inline-block;
 	float: left;
@@ -108,6 +109,16 @@ td:nth-child(7) {
 }
 
 
+/* Menu input controls
+/***************************/
+#months {
+	vertical-align: middle;
+}
+#months-display {
+	color: $week-text;
+}
+
+
 /* Printing
 /***************************/
 @media print {
@@ -120,6 +131,9 @@ td:nth-child(7) {
 	}
 	table {
 		margin: 0;
+	}
+	#menu {
+		display: none;
 	}
 }
 @page {
