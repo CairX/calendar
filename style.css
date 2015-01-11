@@ -118,8 +118,12 @@ td:nth-child(7) {
     margin: 0; }
 
   #menu {
-    display: none; } }
+    display: none; }
+
+  .page {
+    margin: 0; } }
 @page {
-  margin: 0; }
+  margin: 0;
+  size: landscape; }
 
 /*# sourceMappingURL=style.css.map */

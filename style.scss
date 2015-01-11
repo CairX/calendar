@@ -146,7 +146,12 @@ td:nth-child(7) {
 	#menu {
 		display: none;
 	}
+	.page {
+		margin: 0;
+	}
 }
+
 @page {
 	margin: 0;
+	size: landscape;
 }
