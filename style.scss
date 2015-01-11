@@ -96,16 +96,27 @@ td:nth-child(7) {
 /* Menu
 /***************************/
 #menu {
-	background: white;
 	list-style: none;
+
+	background: white;
 	margin: 0 auto 10mm;
 	padding: 0;
+
+	display: flex;
+	justify-content: center;
 
 	-moz-user-select: none;
 	-webkit-user-select: none;
 }
 #menu li {
+	display: inline-block;
 	padding: 1rem;
+
+	border-right: 1px solid #eee;
+
+	&:last-child {
+		border-right: 0;
+	}
 }
 
 
