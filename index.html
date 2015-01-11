@@ -28,7 +28,6 @@
 				var result = '';
 				var today = new Date();
 
-				var holidays = document.getElementById('holidays').checked;
 				var months = document.getElementById('months').value;
 
 				for (var m = today.getMonth(); m < (today.getMonth() + months); m++) {
@@ -50,8 +49,8 @@
 
 						content += DateUtils.padding(day.getDate())
 
-						if (holidays && day.red) {
-							content += Tag.string('p', day.red, { 'class': 'red-day' });;
+						if (day.red) {
+							content += Tag.string('p', day.red, { 'class': 'red-day', 'style': 'display: none;' });;
 						}
 
 						row += Tag.string('td', content);
@@ -83,13 +82,24 @@
 			var displayMonths = function() {
 				document.getElementById('months-display').innerHTML = document.getElementById('months').value;
 			};
+
+			var displayRedDays = function() {
+				var days = document.getElementsByClassName('red-day');
+				var show = document.getElementById('red-days').checked;
+				var display = show ? 'block' : 'none';
+
+				for (var i = 0; i < days.length; i++) {
+					var day = days[i];
+					day.style.display = display;
+				}
+			};
 		</script>
 	</head>
 	<body>
 		<ul id="menu">
 			<li>
 				<label>
-					<input id="holidays" name="holidays" type="checkbox"> Helgdagar
+					<input id="red-days" name="red-days" type="checkbox"> Helgdagar
 				</label>
 			</li>
 			<li>
@@ -105,8 +115,9 @@
 		<script>
 			update();
 			displayMonths();
+			displayRedDays();
 
-			document.getElementById('holidays').addEventListener('click', update);
+			document.getElementById('red-days').addEventListener('click', displayRedDays);
 			document.getElementById('months').addEventListener('change', update);
 			document.getElementById('months').addEventListener('input', displayMonths);
 		</script>
