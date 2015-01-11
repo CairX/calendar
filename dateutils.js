@@ -1,4 +1,6 @@
 var DateUtils = (function() {
+	'use strict';
+
 	var weekNames = [
 		'Mån', 'Tis', 'Ons',
 		'Tor', 'Fre', 'Lör', 'Sön'
@@ -27,7 +29,7 @@ var DateUtils = (function() {
 			}
 		}
 		return date;
-	}
+	};
 
 	var getMonthName = function(month) {
 		return monthNames[month];
