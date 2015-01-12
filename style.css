@@ -96,6 +96,9 @@ td:nth-child(7) {
   #menu li:last-child {
     border-right: 0; }
 
+#red-days {
+  vertical-align: middle; }
+
 /* Menu input controls
 /***************************/
 #months {
