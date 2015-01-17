@@ -1,3 +1,17 @@
+/* Font
+/***************************/
+@font-face {
+  font-family: "Roboto";
+  src: url("roboto.ttf"); }
+@font-face {
+  font-family: "Roboto";
+  src: url("roboto-italic.ttf");
+  font-style: italic; }
+@font-face {
+  font-family: "Roboto";
+  src: url("roboto-bold.ttf");
+  font-style: normal;
+  font-weight: bold; }
 /* Basics
 /***************************/
 html {
@@ -6,7 +20,7 @@ html {
   margin: 0; }
 
 body {
-  font-family: Helvetica, sans-serif;
+  font-family: "Roboto", sans-serif;
   padding: 0;
   margin: 0;
   background: #eee; }
