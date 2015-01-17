@@ -10,16 +10,16 @@ $red-day-text: rgba(0, 0, 0, 0.5);
 /***************************/
 @font-face {
 	font-family: "Roboto";
-	src: url("roboto.ttf");
+	src: url("fonts/roboto.ttf");
 }
 @font-face {
 	font-family: "Roboto";
-	src: url("roboto-italic.ttf");
+	src: url("fonts/roboto-italic.ttf");
 	font-style: italic;
 }
 @font-face {
 	font-family: "Roboto";
-	src: url("roboto-bold.ttf");
+	src: url("fonts/roboto-bold.ttf");
 	font-style: normal;
 	font-weight: bold;
 }
@@ -136,6 +136,9 @@ td:nth-child(7) {
 	&:last-child {
 		border-right: 0;
 	}
+}
+#year {
+	width: 6rem;
 }
 #red-days {
 	vertical-align: middle;

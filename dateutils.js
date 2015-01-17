@@ -96,6 +96,7 @@ var DateUtils = (function() {
 		'getCalendarLastDay': getCalendarLastDay,
 		'getMonthName': getMonthName,
 		'getWeek': getWeek,
+		'monthNames': monthNames,
 		'padding': padding,
 		'weekNames': weekNames
 	};

@@ -24,12 +24,15 @@ var Tag = (function() {
 var update = function() {
     var element = document.getElementById('content');
     var result = '';
-    var today = new Date();
 
-    var months = document.getElementById('months').value;
+    var year = parseInt(document.getElementById('year').value);
+    var month = parseInt(document.getElementById('month').value);
+    var start = new Date(year, month);
 
-    for (var m = today.getMonth(); m < (today.getMonth() + months); m++) {
-        var tmp = new Date(today);
+    var months = parseInt(document.getElementById('months').value);
+
+    for (var m = month; m < (month + months); m++) {
+        var tmp = new Date(start);
         tmp.setMonth(m);
 
         var dates = DateUtils.getCalendarDates(tmp.getFullYear(), tmp.getMonth());
@@ -68,8 +71,8 @@ var update = function() {
         var tbody = Tag.string('tbody', rows);
         var table = Tag.string('table', thead + tbody, { 'class': 'day-rows-' + Math.round(dates.length / 7) });
 
-        var year = Tag.string('span', tmp.getFullYear(), { 'class': 'year' });
-        var header = Tag.string('h2', DateUtils.getMonthName(tmp.getMonth()) + ' ' + year);
+        var yearTag = Tag.string('span', tmp.getFullYear(), { 'class': 'year' });
+        var header = Tag.string('h2', DateUtils.getMonthName(tmp.getMonth()) + ' ' + yearTag);
         var page = Tag.string('div', header + table, { 'class': 'page' });
 
         result += page;
