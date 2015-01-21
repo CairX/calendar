@@ -13,11 +13,15 @@ var DateUtils = (function() {
 
 	var redDays = [
 		{ 'month': 0, 'day': 1, 'name': 'Nyårsdagen' },
+		{ 'month': 0, 'day': 5, 'name': 'Trettondagsafton' },
 		{ 'month': 0, 'day': 6, 'name': 'Trettondedag jul' },
+		{ 'month': 3, 'day': 30, 'name': 'Valborgsmässoafton' },
 		{ 'month': 4, 'day': 1, 'name': 'Valborg' },
 		{ 'month': 5, 'day': 6, 'name': 'Sveriges nationaldag' },
+		{ 'month': 11, 'day': 24, 'name': 'Julafton' },
 		{ 'month': 11, 'day': 25, 'name': 'Juldagen' },
-		{ 'month': 11, 'day': 26, 'name': 'Annandag jul' }
+		{ 'month': 11, 'day': 26, 'name': 'Annandag jul' },
+		{ 'month': 11, 'day': 31, 'name': 'Nyårsafton' }
 	];
 
 	var addRedDay = function(date) {
