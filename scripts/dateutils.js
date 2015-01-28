@@ -24,6 +24,13 @@ var DateUtils = (function() {
 		{ 'month': 11, 'day': 31, 'name': 'Nyårsafton' }
 	];
 
+	var redDays = [
+		{ 'month': 5, 'start': 19, 'end': 25, 'name': 'Midsommarafton' },
+		{ 'month': 5, 'start': 20, 'end': 26, 'name': 'Midsommardagen' },
+		{ 'month': 5, 'start': 20, 'end': 26, 'name': 'Allhelgonaafton' },
+		{ 'month': 5, 'start': 20, 'end': 26, 'name': 'Alla helgons dag' },
+	];
+
 	var addRedDay = function(date) {
 		for (var i = 0; i < redDays.length; i++) {
 			var red = redDays [i];
@@ -96,8 +103,6 @@ var DateUtils = (function() {
 
 	return {
 		'getCalendarDates': getCalendarDates,
-		'getCalendarFirstDay': getCalendarFirstDay,
-		'getCalendarLastDay': getCalendarLastDay,
 		'getMonthName': getMonthName,
 		'getWeek': getWeek,
 		'monthNames': monthNames,
