@@ -123,6 +123,7 @@ td:nth-child(7) {
 
 	display: flex;
 	justify-content: center;
+    align-items: center;
 
 	-moz-user-select: none;
 	-webkit-user-select: none;
@@ -140,7 +141,8 @@ td:nth-child(7) {
 #year {
 	width: 6rem;
 }
-#red-days {
+#menu input,
+#menu select {
 	vertical-align: middle;
 }
 
