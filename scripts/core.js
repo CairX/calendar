@@ -1,4 +1,5 @@
 /* global DateUtils */
+/* exported update, displayMonths, displayRedDays, displayWeek */
 
 'use strict';
 
@@ -90,7 +91,16 @@ var displayRedDays = function() {
     var display = show ? 'block' : 'none';
 
     for (var i = 0; i < days.length; i++) {
-        var day = days[i];
-        day.style.display = display;
+        days[i].style.display = display;
+    }
+};
+
+var displayWeek = function() {
+    var weeks = document.getElementsByClassName('week');
+    var show = document.getElementById('week').checked;
+    var display = show ? 'block' : 'none';
+
+    for (var i = 0; i < weeks.length; i++) {
+        weeks[i].style.display = display;
     }
 };

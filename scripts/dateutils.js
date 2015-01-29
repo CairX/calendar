@@ -1,3 +1,5 @@
+/* exported DateUtils */
+
 var DateUtils = (function() {
 	'use strict';
 
@@ -24,11 +26,11 @@ var DateUtils = (function() {
 		{ 'month': 11, 'day': 31, 'name': 'Nyårsafton' }
 	];
 
-	var redDays = [
+	var redDaysInterval = [
 		{ 'month': 5, 'start': 19, 'end': 25, 'name': 'Midsommarafton' },
 		{ 'month': 5, 'start': 20, 'end': 26, 'name': 'Midsommardagen' },
 		{ 'month': 5, 'start': 20, 'end': 26, 'name': 'Allhelgonaafton' },
-		{ 'month': 5, 'start': 20, 'end': 26, 'name': 'Alla helgons dag' },
+		{ 'month': 5, 'start': 20, 'end': 26, 'name': 'Alla helgons dag' }
 	];
 
 	var addRedDay = function(date) {
