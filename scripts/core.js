@@ -46,7 +46,7 @@ var update = function() {
             var content = '';
 
             if (i % 7 === 0) {
-                content = Tag.string('span', DateUtils.padding(DateUtils.getWeek(day)), { 'class': 'week' });
+                row += Tag.string('td', DateUtils.padding(DateUtils.getWeek(day)), { 'class': 'week' });
             }
 
             content += DateUtils.padding(day.getDate());
@@ -63,7 +63,7 @@ var update = function() {
             }
         }
 
-        var thead = '';
+        var thead = Tag.string('th', 'V', { 'class': 'week' });
         for (var i = 0; i < DateUtils.weekNames.length; i++) {
             thead += Tag.string('th', DateUtils.weekNames[i]);
         }

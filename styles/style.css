@@ -80,15 +80,15 @@ td {
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	vertical-align: top;
 }
-td:nth-child(6),
-td:nth-child(7) {
+td:nth-child(7),
+td:nth-child(8) {
 	color: rgba(0, 0, 0, 0.5);
 	background: rgba(0, 0, 0, 0.05);
 }
 .week {
-	color: #ef6c00;
 	font-style: italic;
-	float: left;
+	text-align:center;
+	width: 5mm;
 }
 .red-day {
 	color: rgba(0, 0, 0, 0.5);
