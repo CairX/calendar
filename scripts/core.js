@@ -55,7 +55,9 @@ var update = function() {
                 content += Tag.string('p', day.red, { 'class': 'red-day', 'style': 'display: none;' });
             }
 
-            row += Tag.string('td', content);
+            var options = {};
+            if (day.getMonth() != m) { options["class"] = "not-in-month"; }
+            row += Tag.string('td', content, options);
 
             if ((i + 1) % 7 === 0 || i == dates.length - 1) {
                 rows += Tag.string('tr', row);
