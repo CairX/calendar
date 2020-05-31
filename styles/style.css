@@ -1,151 +1,166 @@
-/* Font
-/***************************/
+/* Fonts
+/* -------------------------------------------- */
 @font-face {
-  font-family: "Roboto";
-  src: url("../fonts/roboto.ttf"); }
+	font-family: "Roboto";
+	src: url("../fonts/roboto.ttf");
+}
 @font-face {
-  font-family: "Roboto";
-  src: url("../fonts/roboto-italic.ttf");
-  font-style: italic; }
+	font-family: "Roboto";
+	src: url("../fonts/roboto-italic.ttf");
+	font-style: italic;
+}
 @font-face {
-  font-family: "Roboto";
-  src: url("../fonts/roboto-bold.ttf");
-  font-style: normal;
-  font-weight: bold; }
-/* Basics
-/***************************/
-html {
-  font-size: 14px;
-  padding: 0;
-  margin: 0; }
+	font-family: "Roboto";
+	src: url("../fonts/roboto-bold.ttf");
+	font-style: normal;
+	font-weight: bold;
+}
 
+/* Basics
+/* -------------------------------------------- */
+html {
+	font-size: 14px;
+	padding: 0;
+	margin: 0;
+}
 body {
-  font-family: "Roboto", sans-serif;
-  padding: 0;
-  margin: 0;
-  background: #eee; }
+	font-family: "Roboto", sans-serif;
+	padding: 0;
+	margin: 0;
+	background: #eee;
+}
 
 /* Page frame
-/***************************/
+/* -------------------------------------------- */
 .page {
-  width: 297mm;
-  height: 210mm;
-  padding: 10mm;
-  box-sizing: border-box;
-  margin: 0 auto 10mm;
-  background: white; }
+	width: 297mm;
+	height: 210mm;
+	padding: 10mm;
+	box-sizing: border-box;
+	margin: 0 auto 10mm;
+	background: white;
+}
 
 /* Calendar month and year
-/***************************/
+/* -------------------------------------------- */
 h2 {
-  font-weight: normal;
-  margin: 0;
-  height: 10mm; }
-
+	font-weight: normal;
+	margin: 0;
+	height: 10mm;
+}
 h2 .year {
-  color: rgba(0, 0, 0, 0.5);
-  font-weight: lighter; }
+	color: rgba(0, 0, 0, 0.5);
+	font-weight: lighter;
+}
 
 /* Calendar table
-/***************************/
+/* -------------------------------------------- */
 table {
-  width: 100%;
-  table-layout: fixed;
-  text-align: right;
-  border-collapse: collapse; }
-
+	width: 100%;
+	table-layout: fixed;
+	text-align: right;
+	border-collapse: collapse;
+}
 thead {
-  height: 10mm; }
-
+	height: 10mm;
+}
 th {
-  font-weight: lighter;
-  vertical-align: bottom;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
-  height: 100%; }
-
+	font-weight: lighter;
+	vertical-align: bottom;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+	height: 100%;
+}
 th, td {
-  padding: 1rem; }
-
+	padding: 1rem;
+}
 td {
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  vertical-align: top; }
-
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	vertical-align: top;
+}
 td:nth-child(6),
 td:nth-child(7) {
-  color: rgba(0, 0, 0, 0.5);
-  background: rgba(0, 0, 0, 0.05); }
-
+	color: rgba(0, 0, 0, 0.5);
+	background: rgba(0, 0, 0, 0.05);
+}
 .week {
-  color: #ef6c00;
-  font-style: italic;
-  display: inline-block;
-  float: left; }
-
+	color: #ef6c00;
+	font-style: italic;
+	float: left;
+}
 .red-day {
-  color: rgba(0, 0, 0, 0.5);
-  font-style: italic; }
-
+	color: rgba(0, 0, 0, 0.5);
+	font-style: italic;
+}
 .day-rows-5 tbody td {
-  height: calc(34mm - 2rem - 2px); }
-
+	height: calc(34mm - 2rem - 2px);
+}
 .day-rows-6 tbody td {
-  height: calc(28.33mm - 2rem - 2px); }
+	height: calc(28.33mm - 2rem - 2px);
+}
 
 /* Menu
-/***************************/
+/* -------------------------------------------- */
 #menu {
-  list-style: none;
-  background: white;
-  margin: 0 auto 10mm;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  -moz-user-select: none;
-  -webkit-user-select: none; }
+	list-style: none;
 
+	background: white;
+	margin: 0 auto 10mm;
+	padding: 0;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
 #menu li {
-  display: inline-block;
-  padding: 1rem;
-  border-right: 1px solid #eee; }
-  #menu li:last-child {
-    border-right: 0; }
+	display: inline-block;
+	padding: 1rem;
 
+	border-right: 1px solid #eee;
+}
+#menu li:last-child {
+	border-right: 0;
+}
 #year {
-  width: 6rem; }
-
+	width: 6rem;
+}
 #menu input,
 #menu select {
-  vertical-align: middle; }
+	vertical-align: middle;
+}
 
 /* Menu input controls
-/***************************/
+/* -------------------------------------------- */
 #months {
-  vertical-align: middle; }
-
+	vertical-align: middle;
+}
 #months-display {
-  color: #ef6c00; }
+	color: #ef6c00;
+}
 
 /* Printing
-/***************************/
+/* -------------------------------------------- */
 @media print {
-  html {
-    font-size: 12pt; }
-
-  body {
-    font-size: 10pt;
-    background: transparent; }
-
-  table {
-    margin: 0; }
-
-  #menu {
-    display: none; }
-
-  .page {
-    margin: 0; } }
+	html {
+		font-size: 12pt;
+	}
+	body {
+		font-size: 10pt;
+		background: transparent;
+	}
+	table {
+		margin: 0;
+	}
+	#menu {
+		display: none;
+	}
+	.page {
+		margin: 0;
+	}
+}
 @page {
-  margin: 0;
-  size: landscape; }
-
-/*# sourceMappingURL=style.css.map */
+	margin: 0;
+	size: landscape;
+}
