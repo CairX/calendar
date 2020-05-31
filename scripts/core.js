@@ -98,9 +98,8 @@ var displayRedDays = function() {
 var displayWeek = function() {
     var weeks = document.getElementsByClassName('week');
     var show = document.getElementById('week').checked;
-    var display = show ? 'block' : 'none';
 
     for (var i = 0; i < weeks.length; i++) {
-        weeks[i].style.display = display;
+        show ? weeks[i].classList.remove("hide") : weeks[i].classList.add("hide");
     }
 };

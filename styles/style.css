@@ -29,6 +29,9 @@ body {
 	margin: 0;
 	background: #eee;
 }
+.hide {
+	display: none;
+}
 
 /* Page frame
 /* -------------------------------------------- */
