@@ -45,10 +45,6 @@ var update = function() {
             var day = dates[i];
             var content = '';
 
-            if (i % 7 === 0) {
-                row += Tag.string('td', DateUtils.padding(DateUtils.getWeek(day)), { 'class': 'week' });
-            }
-
             content += DateUtils.padding(day.getDate());
 
             if (day.red) {
@@ -60,15 +56,18 @@ var update = function() {
             row += Tag.string('td', content, options);
 
             if ((i + 1) % 7 === 0 || i == dates.length - 1) {
+                row += Tag.string('td', DateUtils.padding(DateUtils.getWeek(day)), { 'class': 'week' });
                 rows += Tag.string('tr', row);
                 row = '';
             }
         }
 
-        var thead = Tag.string('th', 'V', { 'class': 'week' });
+        var thead = '';
         for (var i = 0; i < DateUtils.weekNames.length; i++) {
             thead += Tag.string('th', DateUtils.weekNames[i]);
         }
+
+        thead += Tag.string('th', 'V', { 'class': 'week' });
         thead = Tag.string('thead', Tag.string('tr', thead));
 
         var tbody = Tag.string('tbody', rows);

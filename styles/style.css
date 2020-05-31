@@ -61,7 +61,7 @@ h2 .year {
 table {
 	width: 100%;
 	table-layout: fixed;
-	text-align: right;
+	text-align: left;
 	border-collapse: collapse;
 }
 thead {
