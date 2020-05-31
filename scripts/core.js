@@ -58,7 +58,7 @@ var update = function() {
             row += Tag.string('td', content);
 
             if ((i + 1) % 7 === 0 || i == dates.length - 1) {
-                rows +='<tr>' + row + '</tr>';
+                rows += Tag.string('tr', row);
                 row = '';
             }
         }
