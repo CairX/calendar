@@ -51,9 +51,10 @@ var update = function() {
                 content += Tag.string('p', day.red, { 'class': 'red-day', 'style': 'display: none;' });
             }
 
-            var options = {};
-            if (day.getMonth() != m) { options["class"] = "not-in-month"; }
-            row += Tag.string('td', content, options);
+            var classes = [];
+            if (day.getMonth() != m) { classes.push('not-in-month'); }
+            if (day.getDay() == 6 || day.getDay() == 0) { classes.push('weekend'); }
+            row += Tag.string('td', content, { 'class': classes.join(" ") });
 
             if ((i + 1) % 7 === 0 || i == dates.length - 1) {
                 row += Tag.string('td', DateUtils.padding(DateUtils.getWeek(day)), { 'class': 'week' });
@@ -64,7 +65,9 @@ var update = function() {
 
         var thead = '';
         for (var i = 0; i < DateUtils.weekNames.length; i++) {
-            thead += Tag.string('th', DateUtils.weekNames[i]);
+            var options = {};
+            if (i >= 5) { options['class'] = 'weekend'; }
+            thead += Tag.string('th', DateUtils.weekNames[i], options);
         }
 
         thead += Tag.string('th', 'V', { 'class': 'week' });
@@ -102,5 +105,14 @@ var displayWeek = function() {
 
     for (var i = 0; i < weeks.length; i++) {
         show ? weeks[i].classList.remove("hide") : weeks[i].classList.add("hide");
+    }
+};
+
+const displayWeekend = function() {
+    var weekends = document.getElementsByClassName('weekend');
+    var show = document.getElementById('weekend').checked;
+
+    for (var i = 0; i < weekends.length; i++) {
+        show ? weekends[i].classList.remove("hide") : weekends[i].classList.add("hide");
     }
 };

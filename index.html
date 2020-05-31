@@ -32,6 +32,11 @@
 			</li>
 			<li>
 				<label>
+					<input id="weekend" type="checkbox" checked="checked"> Helger
+				</label>
+			</li>
+			<li>
+				<label>
 					<input id="red-days" type="checkbox"> Helgdagar
 				</label>
 			</li>
@@ -62,6 +67,8 @@
 			update();
 			displayMonths();
 			displayRedDays();
+			displayWeek();
+			displayWeekend();
 
 			document.getElementById('year').addEventListener('change', update);
 			document.getElementById('month').addEventListener('change', update);
@@ -69,6 +76,7 @@
 			document.getElementById('months').addEventListener('change', update);
 			document.getElementById('months').addEventListener('input', displayMonths);
 			document.getElementById('week').addEventListener('click', displayWeek);
+			document.getElementById('weekend').addEventListener('click', displayWeekend);
 		</script>
 	</body>
 </html>
