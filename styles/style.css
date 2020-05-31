@@ -80,11 +80,6 @@ td {
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	vertical-align: top;
 }
-td:nth-child(7),
-td:nth-child(8) {
-	color: rgba(0, 0, 0, 0.5);
-	background: rgba(0, 0, 0, 0.05);
-}
 .week {
 	font-style: italic;
 	text-align:center;
