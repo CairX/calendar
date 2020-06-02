@@ -19,7 +19,8 @@
 /* Basics
 /* -------------------------------------------- */
 html {
-	font-size: 14px;
+	font-size: 11pt;
+	line-height: 1;
 	padding: 0;
 	margin: 0;
 }
@@ -37,7 +38,7 @@ body {
 /* -------------------------------------------- */
 .page {
 	width: 297mm;
-	height: 210mm;
+	height: 209mm;
 	padding: 10mm;
 	box-sizing: border-box;
 	margin: 0 auto 10mm;
@@ -47,7 +48,9 @@ body {
 /* Calendar month and year
 /* -------------------------------------------- */
 h2 {
+	font-size: 16pt;
 	font-weight: normal;
+	padding: 0;
 	margin: 0;
 	height: 10mm;
 }
@@ -60,6 +63,9 @@ h2 .year {
 /* -------------------------------------------- */
 table {
 	width: 100%;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 	table-layout: fixed;
 	text-align: left;
 	border-collapse: collapse;
@@ -67,16 +73,20 @@ table {
 thead {
 	height: 10mm;
 }
-th {
-	font-weight: lighter;
-	vertical-align: bottom;
-	border-bottom: 2px solid rgba(0, 0, 0, 0.15);
-	height: 100%;
+tbody {
+	height: calc(210mm - 10mm - 10mm - 10mm - 10mm);
 }
 th, td {
-	padding: 1rem;
+	box-sizing: border-box;
+}
+th {
+	font-weight: lighter;
+	vertical-align: middle;
+	padding: 0 3mm 1.5mm;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.15);
 }
 td {
+	padding: 3mm;
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	vertical-align: top;
 }
@@ -86,17 +96,17 @@ td {
 .week {
 	font-style: italic;
 	text-align:center;
-	width: 5mm;
+	width: 12mm;
 }
 .red-day {
 	color: rgba(0, 0, 0, 0.5);
 	font-style: italic;
 }
 .day-rows-5 tbody td {
-	height: calc(34mm - 2rem - 2px);
+	height: 34mm;
 }
 .day-rows-6 tbody td {
-	height: calc(28.33mm - 2rem - 2px);
+	height: 28.33mm;
 }
 
 /* Menu
@@ -144,15 +154,8 @@ td {
 /* Printing
 /* -------------------------------------------- */
 @media print {
-	html {
-		font-size: 12pt;
-	}
 	body {
-		font-size: 10pt;
 		background: transparent;
-	}
-	table {
-		margin: 0;
 	}
 	#menu {
 		display: none;
@@ -162,6 +165,8 @@ td {
 	}
 }
 @page {
+	border: 0;
+	padding: 0;
 	margin: 0;
 	size: landscape;
 }
