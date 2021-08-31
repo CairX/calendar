@@ -3,10 +3,11 @@
 var DateUtils = (function() {
 	'use strict';
 
-	var weekNames = [
-		'Mån', 'Tis', 'Ons',
-		'Tor', 'Fre', 'Lör', 'Sön'
-	];
+	var dayInMilliseconds  = 24 * 60 * 60 * 1000;
+	var weekInMilliseconds = 7 * dayInMilliseconds;
+
+	var weekNames = [ 'Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör', 'Sön' ];
+
 	var monthNames = [
 		'Januari', 'Februari', 'Mars', 'April',
 		'Maj', 'Juni', 'Juli', 'Augusti',
@@ -14,12 +15,12 @@ var DateUtils = (function() {
 	];
 
 	var redDays = [
-		{ 'month': 0, 'day': 1, 'name': 'Nyårsdagen' },
-		{ 'month': 0, 'day': 5, 'name': 'Trettondagsafton' },
-		{ 'month': 0, 'day': 6, 'name': 'Trettondedag jul' },
-		{ 'month': 3, 'day': 30, 'name': 'Valborgsmässoafton' },
-		{ 'month': 4, 'day': 1, 'name': 'Valborg' },
-		{ 'month': 5, 'day': 6, 'name': 'Sveriges nationaldag' },
+		{ 'month': 0,  'day': 1,  'name': 'Nyårsdagen' },
+		{ 'month': 0,  'day': 5,  'name': 'Trettondagsafton' },
+		{ 'month': 0,  'day': 6,  'name': 'Trettondedag jul' },
+		{ 'month': 3,  'day': 30, 'name': 'Valborgsmässoafton' },
+		{ 'month': 4,  'day': 1,  'name': 'Valborg' },
+		{ 'month': 5,  'day': 6,  'name': 'Sveriges nationaldag' },
 		{ 'month': 11, 'day': 24, 'name': 'Julafton' },
 		{ 'month': 11, 'day': 25, 'name': 'Juldagen' },
 		{ 'month': 11, 'day': 26, 'name': 'Annandag jul' },
@@ -48,7 +49,7 @@ var DateUtils = (function() {
 		return monthNames[month];
 	};
 
-	var getLogicalDay = function(day) {
+	var ConvertToSwedishDay = function(day) {
 		if (day >= 1 && day <= 6) {
 			return day - 1;
 		} else if (day === 0) {
@@ -60,12 +61,12 @@ var DateUtils = (function() {
 
 	var getCalendarFirstDay = function(year, month) {
 		var date = new Date(year, month);
-		date.setDate(-getLogicalDay(date.getDay()) + 1);
+		date.setDate(-ConvertToSwedishDay(date.getDay()) + 1);
 		return date;
 	};
 	var getCalendarLastDay = function(year, month) {
 		var date = new Date(year, month+1, 0);
-		date.setDate(date.getDate() + 7 - getLogicalDay(date.getDay()) - 1);
+		date.setDate(date.getDate() + 7 - ConvertToSwedishDay(date.getDay()) - 1);
 		return date;
 	};
 
@@ -91,12 +92,17 @@ var DateUtils = (function() {
 	};
 
 	var getWeek = function(date) {
-		var year = new Date(date.getFullYear(), 0);
-		var week = 7 * 24 * 60 * 60 * 1000;
-		var start_of_week = getLogicalDay(date.getDay()) * 24 * 60 * 60 * 1000;
-		var this_year = date.getTime() - start_of_week - year.getTime();
+		var firstDayOfTheYear   = new Date(date.getFullYear(), 0);
+		var isFirstDayInWeekOne = ConvertToSwedishDay(firstDayOfTheYear.getDay()) <= 3;
 
-		return ((Math.ceil(this_year / week) % 52) + 1);
+		var dayOfWeekInMS    = ConvertToSwedishDay(date.getDay()) * dayInMilliseconds;
+		var mondayOfWeekInMS = date.getTime() - dayOfWeekInMS - firstDayOfTheYear.getTime();
+
+		var weekThisYear = Math.ceil(mondayOfWeekInMS / weekInMilliseconds);
+		weekThisYear     = weekThisYear + (isFirstDayInWeekOne ? 1 : 0);
+		weekThisYear     = weekThisYear == 0 ? 53 : weekThisYear
+
+		return weekThisYear;
 	};
 
 	var padding = function(number) {
@@ -105,10 +111,10 @@ var DateUtils = (function() {
 
 	return {
 		'getCalendarDates': getCalendarDates,
-		'getMonthName': getMonthName,
-		'getWeek': getWeek,
-		'monthNames': monthNames,
-		'padding': padding,
-		'weekNames': weekNames
+		'getMonthName':     getMonthName,
+		'getWeek':          getWeek,
+		'monthNames':       monthNames,
+		'padding':          padding,
+		'weekNames':        weekNames
 	};
 })();

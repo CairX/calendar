@@ -23,18 +23,16 @@ var Tag = (function() {
 })();
 
 var update = function() {
-    var element = document.getElementById('content');
-    var result = '';
+    var result  = '';
 
-    var year = parseInt(document.getElementById('year').value);
-    var month = parseInt(document.getElementById('month').value);
-    var start = new Date(year, month);
+    var startYear      = parseInt(document.getElementById('year').value);
+    var startMonth     = parseInt(document.getElementById('month').value);
+    var startDate      = new Date(startYear, startMonth);
+    var numberOfMonths = parseInt(document.getElementById('months').value);
 
-    var months = parseInt(document.getElementById('months').value);
-
-    for (var m = month; m < (month + months); m++) {
-        var tmp = new Date(start);
-        tmp.setMonth(m);
+    for (var month = startMonth; month < (startMonth + numberOfMonths); month++) {
+        var tmp = new Date(startDate);
+        tmp.setMonth(month);
 
         var dates = DateUtils.getCalendarDates(tmp.getFullYear(), tmp.getMonth());
 
@@ -52,7 +50,7 @@ var update = function() {
             }
 
             var classes = [];
-            if (day.getMonth() != m) { classes.push('not-in-month'); }
+            if (day.getMonth() != month) { classes.push('not-in-month'); }
             if (day.getDay() == 6 || day.getDay() == 0) { classes.push('weekend'); }
             row += Tag.string('td', content, { 'class': classes.join(" ") });
 
@@ -71,18 +69,19 @@ var update = function() {
         }
 
         thead += Tag.string('th', 'V', { 'class': 'week' });
-        thead = Tag.string('thead', Tag.string('tr', thead));
+        thead  = Tag.string('thead', Tag.string('tr', thead));
 
         var tbody = Tag.string('tbody', rows);
         var table = Tag.string('table', thead + tbody, { 'class': 'day-rows-' + Math.round(dates.length / 7) });
 
         var yearTag = Tag.string('span', tmp.getFullYear(), { 'class': 'year' });
-        var header = Tag.string('h2', DateUtils.getMonthName(tmp.getMonth()) + ' ' + yearTag);
-        var page = Tag.string('div', header + table, { 'class': 'page' });
+        var header  = Tag.string('h2', DateUtils.getMonthName(tmp.getMonth()) + ' ' + yearTag);
+        var page    = Tag.string('div', header + table, { 'class': 'page' });
 
         result += page;
     }
-    element.innerHTML = result;
+
+    document.getElementById('content').innerHTML = result;
 };
 
 var displayMonths = function() {
