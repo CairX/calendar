@@ -137,19 +137,6 @@ td {
 #year {
 	width: 6rem;
 }
-#menu input,
-#menu select {
-	vertical-align: middle;
-}
-
-/* Menu input controls
-/* -------------------------------------------- */
-#months {
-	vertical-align: middle;
-}
-#months-display {
-	color: #ef6c00;
-}
 
 /* Printing
 /* -------------------------------------------- */

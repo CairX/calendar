@@ -1,5 +1,5 @@
 /* global DateUtils */
-/* exported update, displayMonths, displayRedDays, displayWeek */
+/* exported update, displayRedDays, displayWeek */
 
 'use strict';
 
@@ -82,10 +82,6 @@ var update = function() {
     }
 
     document.getElementById('content').innerHTML = result;
-};
-
-var displayMonths = function() {
-    document.getElementById('months-display').innerHTML = document.getElementById('months').value;
 };
 
 var displayRedDays = function() {
