@@ -43,7 +43,7 @@ var update = function() {
             var day = dates[i];
             var content = '';
 
-            content += DateUtils.padding(day.getDate());
+            content += day.getDate();
 
             if (day.red) {
                 content += Tag.string('p', day.red, { 'class': 'red-day', 'style': 'display: none;' });
@@ -55,7 +55,7 @@ var update = function() {
             row += Tag.string('td', content, { 'class': classes.join(" ") });
 
             if ((i + 1) % 7 === 0 || i == dates.length - 1) {
-                row += Tag.string('td', DateUtils.padding(DateUtils.getWeek(day)), { 'class': 'week' });
+                row += Tag.string('td', DateUtils.getWeek(day), { 'class': 'week' });
                 rows += Tag.string('tr', row);
                 row = '';
             }
