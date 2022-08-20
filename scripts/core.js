@@ -50,7 +50,7 @@ var update = function() {
             }
 
             var classes = [];
-            if (day.getMonth() != month) { classes.push('not-in-month'); }
+            if (day.getMonth() != (month % 12)) { classes.push('not-in-month'); }
             if (day.getDay() == 6 || day.getDay() == 0) { classes.push('weekend'); }
             row += Tag.string('td', content, { 'class': classes.join(" ") });
 
