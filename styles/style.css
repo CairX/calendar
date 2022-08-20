@@ -19,6 +19,7 @@
 /* Basics
 /* -------------------------------------------- */
 html {
+	color: rgba(0, 0, 0, 1);
 	font-size: 11pt;
 	line-height: 1;
 	padding: 0;
@@ -83,23 +84,22 @@ th {
 	font-weight: lighter;
 	vertical-align: middle;
 	padding: 0 3mm 1.5mm;
-	border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+	border-bottom: 1mm solid rgba(0, 0, 0, 1);
 }
 td {
 	padding: 3mm;
-	border: 1px solid rgba(0, 0, 0, 0.15);
+	border: 0.5mm solid rgba(0, 0, 0, 1);
 	vertical-align: top;
 }
 .not-in-month {
-	color: rgba(0, 0, 0, 0.25);
+	font-style: italic;
+	color: rgba(0, 0, 0, 0.5);
 }
 .week {
-	font-style: italic;
 	text-align:center;
 	width: 12mm;
 }
 .red-day {
-	color: rgba(0, 0, 0, 0.5);
 	font-style: italic;
 }
 .day-rows-5 tbody td {
