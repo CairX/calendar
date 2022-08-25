@@ -62,10 +62,10 @@ var update = function() {
         }
 
         var thead = '';
-        for (var i = 0; i < DateUtils.weekNames.length; i++) {
+        for (var i = 0; i < 7; i++) {
             var options = {};
             if (i >= 5) { options['class'] = 'weekend'; }
-            thead += Tag.string('th', DateUtils.weekNames[i], options);
+            thead += Tag.string('th', DateUtils.getDayName((i + 1) % 7), options);
         }
 
         thead += Tag.string('th', 'V', { 'class': 'week' });

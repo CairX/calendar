@@ -6,7 +6,7 @@ var DateUtils = (function() {
 	var dayInMilliseconds  = 24 * 60 * 60 * 1000;
 	var weekInMilliseconds = 7 * dayInMilliseconds;
 
-	var weekNames = [ 'Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör', 'Sön' ];
+	var dayNames = [ 'Sön', 'Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör' ];
 
 	var monthNames = [
 		'Januari', 'Februari', 'Mars', 'April',
@@ -47,6 +47,10 @@ var DateUtils = (function() {
 
 	var getMonthName = function(month) {
 		return monthNames[month];
+	};
+
+	var getDayName = function(day) {
+		return dayNames[day];
 	};
 
 	var ConvertToSwedishDay = function(day) {
@@ -112,9 +116,8 @@ var DateUtils = (function() {
 	return {
 		'getCalendarDates': getCalendarDates,
 		'getMonthName':     getMonthName,
+		'getDayName':       getDayName,
 		'getWeek':          getWeek,
-		'monthNames':       monthNames,
 		'padding':          padding,
-		'weekNames':        weekNames
 	};
 })();

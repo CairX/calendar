@@ -52,14 +52,13 @@
 
 			// Create month options based on month names.
 			// Set selected month to current month.
-			var months = DateUtils.monthNames;
 			var monthOptions = '';
-			for (var i = 0; i < months.length; i++) {
+			for (var i = 0; i < 12; i++) {
 				var params = { 'value': i };
 				if (i == now.getMonth()) {
 					params.selected = 'selected';
 				}
-				monthOptions += Tag.string('option', months[i], params);
+				monthOptions += Tag.string('option', DateUtils.getMonthName(i), params);
 			}
 			document.getElementById('month').innerHTML = monthOptions;
 
