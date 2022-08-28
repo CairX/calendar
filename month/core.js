@@ -47,8 +47,8 @@ var update = function() {
             content += day.getDate();
 
             if (day.red) {
-                var display = 'display: ' + (showRedDays ? 'block' : 'none');
-                content += Tag.string('p', day.red, { 'class': 'red-day', 'style': display });
+                var show = showRedDays ? '' : ' hide';
+                content += Tag.string('p', day.red, { 'class': 'red-day' + show});
             }
 
             var classes = [];
@@ -89,10 +89,9 @@ var update = function() {
 var displayRedDays = function() {
     var days = document.getElementsByClassName('red-day');
     var show = document.getElementById('red-days').checked;
-    var display = show ? 'block' : 'none';
 
     for (var i = 0; i < days.length; i++) {
-        days[i].style.display = display;
+        show ? days[i].classList.remove("hide") : days[i].classList.add("hide");
     }
 };
 
