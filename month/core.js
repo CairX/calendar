@@ -29,6 +29,7 @@ var update = function() {
     var startMonth     = parseInt(document.getElementById('month').value);
     var startDate      = new Date(startYear, startMonth);
     var numberOfMonths = parseInt(document.getElementById('months').value);
+    var showRedDays    = document.getElementById('red-days').checked;
 
     for (var month = startMonth; month < (startMonth + numberOfMonths); month++) {
         var tmp = new Date(startDate);
@@ -46,7 +47,8 @@ var update = function() {
             content += day.getDate();
 
             if (day.red) {
-                content += Tag.string('p', day.red, { 'class': 'red-day', 'style': 'display: none;' });
+                var display = 'display: ' + (showRedDays ? 'block' : 'none');
+                content += Tag.string('p', day.red, { 'class': 'red-day', 'style': display });
             }
 
             var classes = [];
