@@ -101,6 +101,7 @@ td {
 }
 .red-day {
 	font-style: italic;
+	font-size: 0.9em;
 }
 .day-rows-5 tbody td {
 	height: 34mm;
