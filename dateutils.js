@@ -110,13 +110,11 @@ var DateUtils = (function() {
 	};
 
 	var ConvertToSwedishDay = function(day) {
-		if (day >= 1 && day <= 6) {
+		if (day >= 1 && day <= 6)
 			return day - 1;
-		} else if (day === 0) {
+		if (day === 0)
 			return 6;
-		} else {
-			return null;
-		}
+		return null;
 	};
 
 	var getCalendarFirstDay = function(year, month) {
@@ -138,7 +136,6 @@ var DateUtils = (function() {
 
 		while (true) {
 			var tmp = new Date(date);
-			tmp.setDate(date.getDate());
 			tmp = addRedDay(tmp);
 			dates.push(tmp);
 
@@ -151,12 +148,46 @@ var DateUtils = (function() {
 		return dates;
 	};
 
+	/* ISO 8601 - First week
+	 * The ISO 8601 definition for week 01 is the week with the first Thursday
+	 * of the Gregorian year (i.e. of January) in it. The following definitions
+	 * based on properties of this week are mutually equivalent, since
+	 * the ISO week starts with Monday:
+	 * - It is the first week with a majority (4 or more) of its days in January.
+	 * - Its first day is the Monday nearest to 1 January.
+	 * - It has 4 January in it. Hence the earliest possible first week extends
+	 *   from Monday 29 December (previous Gregorian year) to Sunday 4 January,
+	 *   the latest possible first week extends from Monday 4 January to Sunday 10 January.
+	 * - It has the year's first working day in it, if Saturdays,
+	 *   Sundays and 1 January are not working days.
+	 */
+	var getWeekDates = function(year, week) {
+		var dates = [];
+		// Start at the 4 January as we know according to ISO 8601 (note above)
+		// that it will be in the first week of the year.
+		var date = new Date(year, 0, 4);
+		// Move to Monday of week one.
+		date.setDate(date.getDate() - date.getDay() + 1);
+		// Move the desired number of weeks.
+		date.setDate(date.getDate() + ((week - 1) * 7));
+
+		for (var i = 0; i < 7; i++) {
+			var tmp = new Date(date);
+			tmp = addRedDay(tmp);
+			dates.push(tmp);
+			date.setDate(date.getDate() + 1);
+		}
+
+		return dates;
+	};
+
 	var padding = function(number) {
 		return (number.toString().length == 1) ? '0' + number : number;
 	};
 
 	return {
 		'getCalendarDates': getCalendarDates,
+		'getWeekDates':     getWeekDates,
 		'getMonthName':     getMonthName,
 		'getDayName':       getDayName,
 		'getWeek':          getWeek,

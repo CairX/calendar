@@ -1,0 +1,203 @@
+/* Fonts
+/* -------------------------------------------- */
+@font-face {
+	font-family: "Roboto";
+	src: url("../fonts/roboto.ttf");
+}
+@font-face {
+	font-family: "Roboto";
+	src: url("../fonts/roboto-italic.ttf");
+	font-style: italic;
+}
+@font-face {
+	font-family: "Roboto";
+	src: url("../fonts/roboto-bold.ttf");
+	font-style: normal;
+	font-weight: bold;
+}
+
+/* Basics
+/* -------------------------------------------- */
+html {
+	color: rgba(0, 0, 0, 1);
+	font-size: 11pt;
+	line-height: 1;
+	padding: 0;
+	margin: 0;
+}
+body {
+	font-family: "Roboto", sans-serif;
+	padding: 0;
+	margin: 0;
+	background: #eee;
+}
+.hide {
+	display: none;
+}
+
+/* Page frame
+/* -------------------------------------------- */
+.page {
+	display: flex;
+	grid-auto-flow: column;
+	gap: 20mm;
+	width: 297mm;
+	height: 209mm;
+	padding: 10mm;
+	box-sizing: border-box;
+	margin: 0 auto 10mm;
+	background: white;
+}
+
+/* Calendar month and year
+/* -------------------------------------------- */
+h2 {
+	text-align: left;
+	font-size: 16pt;
+	font-weight: normal;
+	padding: 0;
+	margin: 0;
+	height: 10mm;
+}
+h2 .year {
+	color: rgba(0, 0, 0, 0.5);
+	font-weight: lighter;
+}
+
+/* Calendar table
+/* -------------------------------------------- */
+table {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	table-layout: fixed;
+	text-align: left;
+	border-collapse: collapse;
+}
+thead {
+	height: 10mm;
+}
+tbody {
+	height: calc(210mm - 10mm - 10mm - 10mm - 10mm);
+}
+th, td {
+	box-sizing: border-box;
+}
+th {
+	font-weight: lighter;
+	vertical-align: middle;
+	padding: 0 3mm 1.5mm;
+	border-bottom: 1mm solid rgba(0, 0, 0, 1);
+}
+td {
+	padding: 3mm;
+	border: 0.5mm solid rgba(0, 0, 0, 1);
+	vertical-align: top;
+}
+.not-in-month {
+	font-style: italic;
+	color: rgba(0, 0, 0, 0.5);
+}
+.week {
+	text-align:center;
+	width: 12mm;
+}
+.red-day {
+	font-style: italic;
+}
+.day-rows-5 tbody td {
+	height: 34mm;
+}
+.day-rows-6 tbody td {
+	height: 28.33mm;
+}
+
+/* Menu
+/* -------------------------------------------- */
+#menu {
+	list-style: none;
+
+	background: white;
+	margin: 0 auto 10mm;
+	padding: 0;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+#menu li {
+	display: inline-block;
+	padding: 1rem;
+
+	border-right: 1px solid #eee;
+}
+#menu li:last-child {
+	border-right: 0;
+}
+#year {
+	width: 6rem;
+}
+
+/* -------------------------------------------- */
+.week {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+}
+.day-grid {
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	gap: 10mm 5mm;
+
+	width: 100%;
+	box-sizing: border-box;
+
+	flex: 1;
+}
+.day-grid div {
+	display: grid;
+	grid-auto-rows: 1fr;
+	align-items: last baseline;
+
+	text-align: left;
+	box-sizing: border-box;
+}
+.day-grid h3 {
+	font-size: 1rem;
+	font-weight: normal;
+	border-bottom: 0.75mm solid;
+	margin: 0;
+	padding-bottom: 0.25em;
+}
+.line {
+	box-sizing: border-box;
+	border-bottom: 0.5mm solid;
+	margin: 0;
+	padding-bottom: 0.25em;
+}
+
+/* Printing
+/* -------------------------------------------- */
+@media print {
+	body {
+		background: transparent;
+	}
+	#menu {
+		display: none;
+	}
+	.page {
+		margin: 0;
+	}
+}
+@page {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	size: landscape;
+}

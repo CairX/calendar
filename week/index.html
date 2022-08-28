@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Veckokalender</title>
+
+		<link rel="stylesheet" type="text/css" href="style.css">
+
+		<script src="../dateutils.js"></script>
+		<script src="core.js"></script>
+	</head>
+	<body>
+		<ul id="menu">
+			<li>
+				<label>
+					Vecka <input id="week" type="number" min="1" max="53" step="1" size="4" />
+				</label>
+				<label>
+					<input id="year" type="number" min="1970" max="2100" step="1" size="4" />
+				</label>
+			</li>
+			<li>
+				<label>
+					<input id="weeks" type="number" value="2" min="1" max="36" step="1" size="4" /> veckor
+				</label>
+			</li>
+			<li>
+				<label>
+					<input id="weekend" type="checkbox" checked="checked"> Helger
+				</label>
+			</li>
+			<li>
+				<label>
+					<input id="red-days" type="checkbox"> Helgdagar
+				</label>
+			</li>
+		</ul>
+		<div id="content">
+		</div>
+
+		<script>
+			// Get current date.
+			var now = new Date();
+
+			// Set selected year to current year.
+			document.getElementById('week').value = DateUtils.getWeek(now);
+			document.getElementById('year').value = now.getFullYear();
+
+			update();
+			displayWeekend();
+			displayRedDays();
+
+			document.getElementById('week').addEventListener('change', update);
+			document.getElementById('year').addEventListener('change', update);
+			document.getElementById('weeks').addEventListener('change', update);
+			document.getElementById('weekend').addEventListener('click', displayWeekend);
+			document.getElementById('red-days').addEventListener('click', displayRedDays);
+		</script>
+	</body>
+</html>
