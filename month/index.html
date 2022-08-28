@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Månadskalender</title>
+
+		<link rel="stylesheet" type="text/css" href="style.css">
+
+		<script src="../dateutils.js"></script>
+		<script src="core.js"></script>
+	</head>
+	<body>
+		<ul id="menu">
+			<li>
+				<label>
+					<select id="month"></select>
+				</label>
+				<label>
+					<input id="year" type="number" min="1970" max="2100" step="1" size="4" />
+				</label>
+			</li>
+			<li>
+				<label>
+					<input id="months" type="number" value="3" min="1" max="36" step="1" size="4" /> månader
+				</label>
+			</li>
+			<li>
+				<label>
+					<input id="week" type="checkbox" checked="checked"> Veckonummer
+				</label>
+			</li>
+			<li>
+				<label>
+					<input id="weekend" type="checkbox" checked="checked"> Helger
+				</label>
+			</li>
+			<li>
+				<label>
+					<input id="red-days" type="checkbox"> Helgdagar
+				</label>
+			</li>
+		</ul>
+		<div id="content">
+		</div>
+
+		<script>
+			// Get current date.
+			var now = new Date();
+
+			// Set selected year to current year.
+			document.getElementById('year').value = now.getFullYear();
+
+			// Create month options based on month names.
+			// Set selected month to current month.
+			var monthOptions = '';
+			for (var i = 0; i < 12; i++) {
+				var params = { 'value': i };
+				if (i == now.getMonth()) {
+					params.selected = 'selected';
+				}
+				monthOptions += Tag.string('option', DateUtils.getMonthName(i), params);
+			}
+			document.getElementById('month').innerHTML = monthOptions;
+
+			update();
+			displayRedDays();
+			displayWeek();
+			displayWeekend();
+
+			document.getElementById('year').addEventListener('change', update);
+			document.getElementById('month').addEventListener('change', update);
+			document.getElementById('red-days').addEventListener('click', displayRedDays);
+			document.getElementById('months').addEventListener('change', update);
+			document.getElementById('week').addEventListener('click', displayWeek);
+			document.getElementById('weekend').addEventListener('click', displayWeekend);
+		</script>
+	</body>
+</html>

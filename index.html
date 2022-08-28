@@ -2,77 +2,55 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Månadskalender</title>
-
-		<link rel="stylesheet" type="text/css" href="styles/style.css">
-
-		<script src="scripts/dateutils.js"></script>
-		<script src="scripts/core.js"></script>
+		<title>Kalender</title>
+		<style>
+			@font-face {
+				font-family: "Roboto";
+				src: url("fonts/roboto.ttf");
+			}
+			@font-face {
+				font-family: "Roboto";
+				src: url("fonts/roboto-italic.ttf");
+				font-style: italic;
+			}
+			@font-face {
+				font-family: "Roboto";
+				src: url("fonts/roboto-bold.ttf");
+				font-style: normal;
+				font-weight: bold;
+			}
+			html {
+				color: rgba(0, 0, 0, 1);
+				font-family: "Roboto", sans-serif;
+				font-size: 1em;
+				line-height: 1.5;
+				padding: 0;
+				margin: 0;
+			}
+			body {
+				padding: 0;
+				margin: 0;
+			}
+			main {
+				box-sizing: border-box;
+				max-width: 72rem;
+				margin: 3rem auto;
+				padding: 3rem;
+			}
+			h1 {
+				border-bottom: 2px solid;
+			}
+		</style>
 	</head>
 	<body>
-		<ul id="menu">
-			<li>
-				<label>
-					<select id="month"></select>
-				</label>
-				<label>
-					<input id="year" type="number" min="1970" max="2100" step="1" size="4" />
-				</label>
-			</li>
-			<li>
-				<label>
-					<input id="months" type="number" value="3" min="1" max="36" step="1" size="4" /> månader
-				</label>
-			</li>
-			<li>
-				<label>
-					<input id="week" type="checkbox" checked="checked"> Veckonummer
-				</label>
-			</li>
-			<li>
-				<label>
-					<input id="weekend" type="checkbox" checked="checked"> Helger
-				</label>
-			</li>
-			<li>
-				<label>
-					<input id="red-days" type="checkbox"> Helgdagar
-				</label>
-			</li>
-		</ul>
-		<div id="content">
-		</div>
-
-		<script>
-			// Get current date.
-			var now = new Date();
-
-			// Set selected year to current year.
-			document.getElementById('year').value = now.getFullYear();
-
-			// Create month options based on month names.
-			// Set selected month to current month.
-			var monthOptions = '';
-			for (var i = 0; i < 12; i++) {
-				var params = { 'value': i };
-				if (i == now.getMonth()) {
-					params.selected = 'selected';
-				}
-				monthOptions += Tag.string('option', DateUtils.getMonthName(i), params);
-			}
-			document.getElementById('month').innerHTML = monthOptions;
-
-			update();
-			displayRedDays();
-			displayWeek();
-			displayWeekend();
-
-			document.getElementById('year').addEventListener('change', update);
-			document.getElementById('month').addEventListener('change', update);
-			document.getElementById('red-days').addEventListener('click', displayRedDays);
-			document.getElementById('months').addEventListener('change', update);
-			document.getElementById('week').addEventListener('click', displayWeek);
-			document.getElementById('weekend').addEventListener('click', displayWeekend);
-		</script>
+		<main>
+			<h1>Kalender</h1>
+			<p>Sidor utformade för utskrift av olika typer av kalendrar.</p>
+			<p>
+				<ul>
+					<li><a href="month/index.html">Månadskalender i rutnätsformat för A4</a></li>
+				</ul>
+			</p>
+		</main>
 	</body>
 </html>
